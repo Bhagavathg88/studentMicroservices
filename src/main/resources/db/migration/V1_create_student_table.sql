@@ -1,0 +1,7 @@
+CREATE TABLE users (
+    studentId BIGINT AUTO_INCREMENT PRIMARY KEY,
+    firstName VARCHAR(50) NOT NULL,
+    lastName VARCHAR(50) NOT NULL,
+    dateOfBirth DATE NOT NULL,
+    course VARCHAR(50) NOT NULL
+);
