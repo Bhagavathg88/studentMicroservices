@@ -2,6 +2,8 @@ package com.spring.microservices.training.controller;
 
 import com.spring.microservices.training.dao.StudentService;
 import com.spring.microservices.training.entity.Student;
+import com.spring.microservices.training.pojo.StudentFee;
+import com.spring.microservices.training.service.StudentFeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,8 @@ import java.util.Optional;
 public class StudentController {
 
    private final StudentService studentService;
+
+   private final StudentFeeService studentFeeService;
 
       @GetMapping("/student/{id}")
       public ResponseEntity<Student> findStudentbyID(@PathVariable Integer id){
@@ -52,6 +56,11 @@ public class StudentController {
     @PatchMapping("/student")
     public Student updateStudentRecords(@RequestBody Student student){
           return studentService.save(student);
+    }
+
+    @PostMapping("/student/fees")
+    public StudentFee postPayment(@RequestBody StudentFee studentFee){
+          return studentFeeService.postPayment(studentFee);
     }
 
 
